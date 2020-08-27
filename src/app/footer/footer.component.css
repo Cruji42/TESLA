@@ -1,0 +1,41 @@
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0px;
+  width: 100%;
+  background-color: #F7F6F6;
+  
+}
+
+
+
+h2{
+  text-align: center;
+}
+
+.title {
+  color: #EC9EB1;
+}
+
+.subtitle{
+  color: #9B9B9B;
+}
+
+.policy{
+  padding-top: 5%;
+  padding-right: 10%;
+  text-align: right;
+}
+
+.center{
+  width: 20%;
+  margin: 0 auto;
+}
+
+.logo{
+  height: 50px;
+  width: auto;
+}
+
+
+

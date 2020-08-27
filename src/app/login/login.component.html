@@ -1,0 +1,47 @@
+<div id="login" class="log_back" >
+  <div class="card">
+  <div class="card-body ">
+    <br>
+
+    <div id="login-row" class="row justify-content-center align-items-center">
+      <div id="login-column" class="col-md-6">
+        <div id="login-box" class="col-md-12">
+          <form id="login-form" class="form" [formGroup]="registerForm" >
+
+            <h2 class="text-center text-info letter">𝒫𝒶𝓈𝓉𝑒𝓁𝑒𝓇í𝒶 𝐿𝒜𝐼𝒩𝒩𝐸</h2>
+            <h5 class="text-center text-info letter" style="font-family: 'Apple Color Emoji'; padding-top: 10px"> L O G I N</h5>
+            <div class="form-group" style="padding-top: 10px">
+              <label for="username" class="text-info letter">Correo:</label><br>
+<!--              <input type="email" required #email name="email" id="username" class="form-control"  >-->
+              <input type="text" #email formControlName="email" id="username" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
+              <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                <div *ngIf="f.email.errors.required">Email es requerido</div>
+                <div *ngIf="f.email.errors.email">Formato de email invalido</div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="password"   class="text-info letter">Contraseña:</label><br>
+<!--              <input type="password" required #pass name="password" id="password" class="form-control">-->
+              <input type="password" #pass id="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+              <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                <div *ngIf="f.password.errors.required">Contraseña requerida</div>
+                <div *ngIf="f.password.errors.minlength">La contraseña debe tener minimo 8 caracteres</div>
+              </div>
+            </div>
+            <div class="form-group">
+              <input type="submit" class="btn btn-info btn-md enter-button" (click)="Login(pass.value, email.value)" value="Entrar">
+            </div>
+            <p id="forgot-link " class="text-center ">
+              <span class="letter"> ¿Olvidaste tu contraseña? </span> <a href="forgot" class="text-info letter"  > Recuperar</a>
+            </p>
+            <p id="register-link " class="text-center ">
+             <span class="letter" > ¿Aun no tienes cuenta? </span> <a href="registrar" class="text-info letter"  > Registrate</a>
+            </p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+
+</div>

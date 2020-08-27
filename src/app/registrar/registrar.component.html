@@ -1,0 +1,84 @@
+<div id="login" class="log_back">
+  <div class="card" >
+    <div class="card-body">
+      <br>
+      <div id="login-row" class="row justify-content-center align-items-center">
+        <div id="login-column" class="col-md-6">
+          <div id="login-box" class="col-md-12">
+            <form id="login-form" class="form" [formGroup]="registerForm" >
+
+              <h2 class="text-center text-info letter">𝒫𝒶𝓈𝓉𝑒𝓁𝑒𝓇í𝒶 𝐿𝒜𝐼𝒩𝒩𝐸</h2>
+              <h5 class="text-center text-info letter" style="font-family: 'Apple Color Emoji'; padding-top: 10px"> R E G I S T R O</h5>
+              <div class="form-group" style="padding-top: 10px">
+
+                <label for="nombre" class="text-info letter">Nombre:</label><br>
+                <input type="text" formControlName="nombre" #nombre id="nombre" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.nombre.errors }">
+                <div *ngIf="submitted && f.nombre.errors" class="invalid-feedback">
+                  <div *ngIf="f.nombre.errors.required">Nombre es requerido</div>
+<!--                  <div *ngIf="f.nombre.errors">Formato de email invalido</div>-->
+                </div>
+
+                <label for="apellido" class="text-info letter">Apellido:</label><br>
+                <input type="text" formControlName="apellido" #apellido id="apellido" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.apellido.errors }" >
+                <div *ngIf="submitted && f.apellido.errors" class="invalid-feedback">
+                  <div *ngIf="f.apellido.errors.required">Apellido es requerido</div>
+                  <!--                  <div *ngIf="f.nombre.errors">Formato de email invalido</div>-->
+                </div>
+
+                <label for="telefono" class="text-info letter">Telefono:</label><br>
+                <input type="text" formControlName="telefono" #telefono id="telefono" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.telefono.errors }">
+                <div *ngIf="submitted && f.telefono.errors" class="invalid-feedback">
+                  <div *ngIf="f.telefono.errors.required">Telefono es requerido</div>
+                  <div *ngIf="f.telefono.errors.minlength">El telefono debe tener minimo 10 numeros</div>
+                  <div *ngIf="f.telefono.errors.pattern">El telefono solo debe contener numeros</div>
+                </div>
+
+                <label for="ciudad" class="text-info letter">Ciudad:</label><br>
+                <input type="text" #ciudad formControlName="ciudad" id="ciudad" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.ciudad.errors }" >
+                <div *ngIf="submitted && f.ciudad.errors" class="invalid-feedback">
+                  <div *ngIf="f.ciudad.errors.required">Ciudad es requerido</div>
+<!--                  <div *ngIf="f.telefono.errors.minlength">El telefono debe tener minimo 10 numeros</div>-->
+                </div>
+
+                <label for="direccion" class="text-info letter">Dirección:</label><br>
+                <input type="text" #direccion id="direccion" class="form-control" formControlName="direccion" [ngClass]="{ 'is-invalid': submitted && f.direccion.errors }"  >
+                <div *ngIf="submitted && f.direccion.errors" class="invalid-feedback">
+                  <div *ngIf="f.direccion.errors.required">Dirección es requerido</div>
+                  <!--                  <div *ngIf="f.telefono.errors.minlength">El telefono debe tener minimo 10 numeros</div>-->
+                </div>
+
+                <label for="correo" class="text-info letter">Correo:</label><br>
+<!--                <input type="email" #correo name="correo" id="correo" class="form-control"  >-->
+                <input type="text" #correo formControlName="correo" id="correo" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.correo.errors }" />
+                <div *ngIf="submitted && f.correo.errors" class="invalid-feedback">
+                  <div *ngIf="f.correo.errors.required">Email es requerido</div>
+                  <div *ngIf="f.correo.errors.email">Formato de email invalido</div>
+                </div>
+
+                <label for="contrasena" class="text-info letter">Contraseña:</label><br>
+<!--                <input type="text" #contrasena name="contrasena" id="contrasena" class="form-control"  >-->
+                <input type="password" #contrasena id="contrasena" formControlName="contrasena" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.contrasena.errors }" />
+                <div *ngIf="submitted && f.contrasena.errors" class="invalid-feedback">
+                  <div *ngIf="f.contrasena.errors.required">Contraseña requerida</div>
+                  <div *ngIf="f.contrasena.errors.minlength">La contraseña debe tener minimo 8 caracteres</div>
+                </div>
+
+              </div>
+
+              <div class="form-group">
+                <input type="button" class="btn btn-info btn-md enter-button" (click)="registrar_usuario(nombre.value, apellido.value, telefono.value, direccion.value, ciudad.value, correo.value, contrasena.value)" value="Registrar">
+              </div>
+              <p id="forgot-link " class="text-center ">
+                <span class="letter">¡Ya tengo cuenta!</span> <a href="login" class="text-info letter"  > Ingresar</a>
+              </p>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+

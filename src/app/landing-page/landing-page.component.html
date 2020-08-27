@@ -1,0 +1,35 @@
+<app-navbar></app-navbar>
+<img src="../../assets/img/bannerCars.jpg" class="banner">
+  <div class="info">
+    <h3>Autos Eléctricos de Lujo</h3>
+    <br>
+    <p>Tesla Motors</p>
+    <div class="row">
+      <div class="col">
+        <img src="../../assets/img/tesla1.png" style="width: 90%; height: auto">
+      </div>
+      <div class="col">
+        <img src="../../assets/img/tesla2.png" style="width: 90%; height: auto">
+      </div>
+    </div>
+    <div class="cards">
+      <div class="row">
+        <h3 style="color: #FFFFFF">Inovación Tecnológica</h3>
+      </div>
+    <div class="row" style="padding-top: 5%" >
+    <div class="col" *ngFor="let y of products">
+      <div class="card">
+        <div style="width: 100%; height: 40%">
+        <img src="{{y.image}}" class="card-img-top" style="width: 100%; height: 200px; display: block">
+        </div>
+        <div class="card-body">
+          <h6 class="card-title" >{{y.name}}</h6>
+          <span>{{y.model}}</span>
+        </div>
+      </div>
+    </div>
+    </div>
+    </div>
+  </div>
+
+

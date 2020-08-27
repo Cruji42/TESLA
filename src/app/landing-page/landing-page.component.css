@@ -1,0 +1,66 @@
+.banner{
+  width: 100%;
+}
+.info{
+  border-style: solid;
+  border-width: 7px;
+  border-color: rgba(208, 204, 204, 0.45);
+  background-color: rgba(175, 175, 180, 0.49);
+  position: absolute;
+  top: 30%;
+  left: 10%;
+  right: 10%;
+  width: 80%;
+  height: 60%;
+}
+.info h3{
+  color: #333333;
+  font-size: 30px;
+  margin: 0 auto;
+  text-align: center;
+}
+.info p{
+  color: rgba(112, 112, 112, 0.82);
+  font-family: "Segoe UI";
+  font-size: 16px;
+  margin: 0 auto;
+  text-align: center;
+}
+.info h2{
+  position: absolute;
+  top: 120%;
+  right: 30%;
+  left: 30%;
+  color: rgba(255, 255, 255, 0.9);
+  font-family: "Segoe UI";
+  font-size: 50px;
+  text-align: center;
+}
+
+.info img{
+  height: 30%;
+  width: auto;
+}
+
+.cards{
+  position: absolute;
+  top: 140%;
+  left: 5%;
+  right: 5%;
+}
+
+span {
+  display: inline-block;
+  width: 180px;
+  white-space: nowrap;
+  overflow: hidden !important;
+  text-overflow: ellipsis;
+}
+
+h6 {
+  display: inline-block;
+  width: 190px;
+  white-space: nowrap;
+  overflow: hidden !important;
+  text-overflow: ellipsis;
+}

@@ -1,0 +1,42 @@
+<div class="center">
+  <div class="row" >
+  <img src="../assets/img/Tesla_Logo.png" class="logo">
+  </div>
+</div>
+<nav class="navbar navbar-expand-lg navbar-light">
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="home">INICIO</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="catalog">DISTRIBUIDORES</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="order">TIENDA</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="about">NOSOTROS</a>
+      </li>
+      <li class="nav-item"  *ngIf="log === 1">
+        <a class="nav-link" href="orders">PEDIDOS</a>
+      </li>
+        <li class="nav-item dropdown " style="right: 2%; position: absolute" *ngIf="log === 1">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <img width="30px" height="30px" src="https:\\firebasestorage.googleapis.com\v0\b\lainne-c321f.appspot.com\o\avatar-placeholder.png?alt=media&token=10c6f845-849b-4b10-9fa4-427da8b8ac95">
+            {{dataUser}}
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="right: 7.5%; position: absolute">
+            <a class="dropdown-item"  (click)="Perfil()">Perfil</a>
+            <a class="dropdown-item" (click)="LogOut()">Cerrar sesión</a>
+          </div>
+        </li>
+      <button  class="btn btn-md enter-button"  (click)="LogIn()" style="right: 2%; width: auto; position: absolute" *ngIf ="log != 1">
+        Iniciar Sesion
+      </button>
+
+    </ul>
+
+  </div>
+</nav>
+<hr>

@@ -1,0 +1,146 @@
+<div class="center">
+  <div class="row" >
+    <h3>𝒫𝒶𝓈𝓉𝑒𝓁𝑒𝓇í𝒶</h3>
+    <img src="../assets/img/Cake.png" class="logo">
+    <h3>𝐿𝒜𝐼𝒩𝒩𝐸</h3>
+  </div>
+</div>
+<nav class="navbar navbar-expand-lg navbar-light">
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="home">INICIO</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="catalog">GALERIA</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="order">TIENDA</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="about">NOSOTROS</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" (click)="goOrders()">PEDIDOS</a>
+      </li>
+      <li class="nav-item dropdown " style="right: 2%; position: absolute">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <img width="30px" height="30px" src="https:\\firebasestorage.googleapis.com\v0\b\lainne-c321f.appspot.com\o\avatar-placeholder.png?alt=media&token=10c6f845-849b-4b10-9fa4-427da8b8ac95">
+          {{dataUser}}
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="right: 7.5%; position: absolute">
+          <a class="dropdown-item"  (click)="Perfil()">Perfil</a>
+          <a class="dropdown-item" (click)="LogOut()">Cerrar sesión</a>
+        </div>
+      </li>
+
+    </ul>
+
+  </div>
+</nav>
+<hr>
+
+<div id="login" class="log_back" >
+  <div class="card">
+    <div class="card-body ">
+      <br>
+      <div id="login-row" class="row justify-content-center align-items-center">
+       <img src="../../../assets/img/Chef.png">
+        <div id="login-column" class="col-md-6">
+          <div id="login-box" class="col-md-12">
+            <form id="login-form" class="form" [formGroup]="registerForm" >
+
+              <div class="form-group" style="padding-top: 10px">
+                <label for="FechaEntrega" class="text-info letter">¿Cuando lo quieres?</label><br>
+                <input type="datetime-local" formControlName="fecha" #FechaEntrega id="FechaEntrega" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.fecha.errors }">
+                <div *ngIf="submitted && f.fecha.errors" class="invalid-feedback">
+                  <div *ngIf="f.fecha.errors.required">La fecha es requerida</div>
+                  <div *ngIf="fecha_not">Formato de fecha incorrecto</div>
+                  <!--                  <div *ngIf="f.nombre.errors">Formato de email invalido</div>-->
+                </div>
+              </div>
+
+              <div class="form-group" style="padding-top: 10px">
+                <label for="cantidad" class="text-info letter">Cantidad:</label><br>
+                <input type="number" formControlName="cantidad" #cantidad id="cantidad" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.cantidad.errors }">
+                <div *ngIf="submitted && f.cantidad.errors" class="invalid-feedback">
+                  <div *ngIf="f.cantidad.errors.required">La cantidad es requerida</div>
+                  <!--                  <div *ngIf="f.nombre.errors">Formato de email invalido</div>-->
+                </div>
+              </div>
+
+              <div class="form-group" style="padding-top: 10px">
+                <label for="decoracion" class="text-info letter">Decoración:</label><br>
+                <input type="text" formControlName="decoracion" #decoracion id="decoracion" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.decoracion.errors }">
+                <div *ngIf="submitted && f.decoracion.errors" class="invalid-feedback">
+                  <div *ngIf="f.decoracion.errors.required">La decoración es requerida</div>
+                  <!--                  <div *ngIf="f.nombre.errors">Formato de email invalido</div>-->
+                </div>
+              </div>
+
+              <div class="form-group" style="padding-top: 10px">
+                <label for="tamano" class="text-info letter">Tamaño:</label><br>
+                <!--<input type="text" #tamano name="tamano" id="tamano" class="form-control"  >-->
+                <select name="tamano" id="tamano" #tamano  formControlName="tamano" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.tamano.errors } ">
+                  <option value="Grande">Grande (Unico tamaño disponible por el momento)</option>
+                  <!--<option value="Chico">Chico</option>-->
+                </select>
+                <div *ngIf="submitted && f.tamano.errors" class="invalid-feedback">
+                  <div *ngIf="f.tamano.errors.required">El tamaño es requerido</div>
+                  <!--                  <div *ngIf="f.nombre.errors">Formato de email invalido</div>-->
+                </div>
+              </div>
+
+              <div class="form-group" style="padding-top: 10px">
+                <label for="sabor" class="text-info letter">Sabor:</label><br>
+                <!--<input type="text" #sabor name="sabor" id="sabor" class="form-control"  >-->
+                <select name="sabor" id="sabor" #sabor formControlName="sabor" class="form-control"  [ngClass]="{ 'is-invalid': submitted && f.sabor.errors } ">
+                  <option value="Chocolate">Chocolate</option>
+                  <!--<option value="Marmoleado">Marmoleado</option>-->
+                  <option value="Clásico">Clásico</option>
+                </select>
+                <div *ngIf="submitted && f.sabor.errors" class="invalid-feedback">
+                  <div *ngIf="f.sabor.errors.required">El sabor es requerido</div>
+                  <!--                  <div *ngIf="f.nombre.errors">Formato de email invalido</div>-->
+                </div>
+              </div>
+
+              <div class="form-group" style="padding-top: 10px">
+                <label for="relleno" class="text-info letter">Relleno:</label><br>
+                <!--<input type="text" #relleno name="relleno" id="relleno" class="form-control"  >-->
+                <select name="relleno" id="relleno" #relleno formControlName="relleno" class="form-control"  [ngClass]="{ 'is-invalid': submitted && f.relleno.errors } ">
+                  <option value="Durazno">Durazno</option>
+                  <option value="Mermelada de Fresa">Mermelada de Fresa</option>
+                  <option value="Sin relleno">Sin relleno</option>
+                </select>
+                <div *ngIf="submitted && f.relleno.errors" class="invalid-feedback">
+                  <div *ngIf="f.relleno.errors.required">El relleno es requerida</div>
+                  <!--                  <div *ngIf="f.nombre.errors">Formato de email invalido</div>-->
+                </div>
+              </div>
+
+              <div class="form-group" style="padding-top: 10px">
+                <label for="extra" class="text-info letter">Extra:</label><br>
+                <!--<input type="text" #extra name="extra" id="extra" class="form-control"  >-->
+                <select name="extra" id="extra" #extra formControlName="extra" class="form-control"  [ngClass]="{ 'is-invalid': submitted && f.extra.errors } ">
+                  <option value="3 leches">3 Leches</option>
+                  <option value="Natural">Natural</option>
+                </select>
+                <div *ngIf="submitted && f.extra.errors" class="invalid-feedback">
+                  <div *ngIf="f.extra.errors.required">Extras es requerida</div>
+                  <!--                  <div *ngIf="f.nombre.errors">Formato de email invalido</div>-->
+                </div>
+              </div>
+
+              <div class="form-group">
+                <input type="button" class="btn btn-info btn-md enter-button" value="Ordenar"
+                       (click)="makeOrder(FechaEntrega.value, cantidad.value, decoracion.value, tamano.value, sabor.value, relleno.value, extra.value)">
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

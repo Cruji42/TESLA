@@ -1,0 +1,81 @@
+<div class="center">
+  <div class="row" >
+    <h3>𝒫𝒶𝓈𝓉𝑒𝓁𝑒𝓇í𝒶</h3>
+    <img src="../assets/img/Cake.png" class="logo">
+    <h3>𝐿𝒜𝐼𝒩𝒩𝐸</h3>
+  </div>
+</div>
+<nav class="navbar navbar-expand-lg navbar-light">
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="home">INICIO</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="catalog">GALERIA</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="order">TIENDA</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="about">NOSOTROS</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" (click)="goOrders()">PEDIDOS</a>
+      </li>
+      <li class="nav-item dropdown " style="right: 2%; position: absolute">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <img width="30px" height="30px" src="https:\\firebasestorage.googleapis.com\v0\b\lainne-c321f.appspot.com\o\avatar-placeholder.png?alt=media&token=10c6f845-849b-4b10-9fa4-427da8b8ac95">
+          {{dataUser.Nombre}}
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="right: 7.5%; position: absolute">
+          <a class="dropdown-item"  (click)="Perfil()">Perfil</a>
+          <a class="dropdown-item" (click)="LogOut()">Cerrar sesión</a>
+        </div>
+      </li>
+
+    </ul>
+
+  </div>
+</nav>
+<hr>
+
+<section class="section about-section gray-bg" id="about">
+  <div class="container">
+    <div class="row align-items-center flex-row-reverse">
+      <div class="col-lg-6">
+        <div class="about-text go-to">
+          <h3 class="dark-color">{{dataUser.Nombre}}</h3>
+          <h6 class="theme-color lead">{{dataUser.Apellido}}</h6>
+          <div class="row about-list">
+            <div class="col-md-6">
+              <div class="media">
+                <label>Ciudad</label>
+                <p>{{dataUser.Ciudad}}</p>
+              </div>
+              <div class="media">
+                <label>Dirección</label>
+                <p>{{dataUser.Direccion}}</p>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="media">
+                <label>E-mail</label>
+                <p>{{dataUser.Correo}}</p>
+              </div>
+              <div class="media">
+                <label>Teléfono</label>
+                <p>{{dataUser.Telefono}}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="about-avatar">
+          <img src="{{dataUser.Avatar}}" title="" alt="">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
