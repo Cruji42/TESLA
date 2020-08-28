@@ -8,7 +8,7 @@ export class WsService {
   }
 
   Get_Main_Products(){
-    return this.http.get('http://localhost/CARS/index.php/PRODUCT');
+    return this.http.get('http://localhost/CARS/get_Products.php');
   }
   Login(data){
     return this.http.post('http://localhost/CARS/Login.php', data);
