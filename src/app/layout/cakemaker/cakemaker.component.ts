@@ -110,7 +110,7 @@ export class CakemakerComponent implements OnInit {
     this.WS.CreateOrder(this.OrderData).subscribe(response => {
       this.data = response;
       console.log(this.data);
-      if( this.data.status_code_header === 'HTTP/1.1 422 Unprocessable Entity'){
+      if ( this.data.status_code_header === 'HTTP/1.1 422 Unprocessable Entity'){
         Swal.fire({
           title: 'Error',
           text: 'La fecha no cumple con el formato',

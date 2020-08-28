@@ -1,8 +1,6 @@
 <div class="center">
   <div class="row" >
-    <h3>𝒫𝒶𝓈𝓉𝑒𝓁𝑒𝓇í𝒶</h3>
-    <img src="../assets/img/Cake.png" class="logo">
-    <h3>𝐿𝒜𝐼𝒩𝒩𝐸</h3>
+    <img src="../assets/img/Tesla_Logo.png" class="logo">
   </div>
 </div>
 <nav class="navbar navbar-expand-lg navbar-light">
@@ -12,21 +10,21 @@
         <a class="nav-link" href="home">INICIO</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="catalog">GALERIA</a>
+        <a class="nav-link" href="catalog">DISTRIBUIDORES</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="order">TIENDA</a>
+        <a class="nav-link" href="order">COMUNIDAD</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="about">NOSOTROS</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" (click)="goOrders()">PEDIDOS</a>
+      <li class="nav-item"  *ngIf="log === 1">
+        <a class="nav-link" href="orders">CITAS</a>
       </li>
       <li class="nav-item dropdown " style="right: 2%; position: absolute">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           <img width="30px" height="30px" src="https:\\firebasestorage.googleapis.com\v0\b\lainne-c321f.appspot.com\o\avatar-placeholder.png?alt=media&token=10c6f845-849b-4b10-9fa4-427da8b8ac95">
-          {{dataUser.Nombre}}
+          {{dataUser}}
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="right: 7.5%; position: absolute">
           <a class="dropdown-item"  (click)="Perfil()">Perfil</a>
@@ -39,6 +37,7 @@
   </div>
 </nav>
 <hr>
+
 <div class="row">
 
     <div  class="card" *ngFor="let y of response2_M">
