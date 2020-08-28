@@ -14,7 +14,7 @@ export class WsService {
     return this.http.post('http://localhost/CARS/Login.php', data);
   }
   Get_Stores(){
-    return this.http.get('http://localhost/CARS/index.php/STORE');
+    return this.http.get('http://localhost/CARS/get_Stores.php');
   }
   ws_create(data){
     return this.http.post('http://localhost/CARS/index.php/USER', data);

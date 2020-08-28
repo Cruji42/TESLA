@@ -14,7 +14,7 @@ import { AboutComponent } from './about/about.component';
 import { RegistrarComponent } from './registrar/registrar.component';
 import { ForgotComponent } from './forgot/forgot.component';
 import {LoginComponent} from './login/login.component';
-
+import { DataTablesModule } from 'angular-datatables';
 
 
 @NgModule({
@@ -35,6 +35,7 @@ import {LoginComponent} from './login/login.component';
     HttpClientModule,
     ReactiveFormsModule,
     FormsModule,
+    DataTablesModule
   ],
   providers: [AuthGuard],
   bootstrap: [AppComponent]

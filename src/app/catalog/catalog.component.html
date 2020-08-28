@@ -1,8 +1,43 @@
 <app-navbar></app-navbar>
-<!--<div class="center">
-<div class="gallery" *ngFor="let y of stores">
-  <a target="_blank" href="{{y.name}}">
-    <img src="{{y.image}}">
-  </a>
+<div class="center">
+<!--<table datatable class="row-border hover">
+  <thead>
+    <tr>
+      <th>Nombre</th>
+      <th>Ciudad</th>
+      <th>Dirección</th>
+      <th>Contacto</th>
+      <th>Referencia</th>
+    </tr>
+  </thead>
+  <tbody *ngFor="let y of stores">
+    <tr>
+      <td>{{y.name}}</td>
+      <td>{{y.city}}</td>
+      <td>{{y.address}}</td>
+      <td>{{y.schedule}}</td>
+      <td><img src="{{y.image}}" style="height: 50px;"></td>
+    </tr>
+  </tbody>
+</table>-->
+  <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="row-border hover">
+    <thead>
+    <tr>
+      <th>Nombre</th>
+      <th>Ciudad</th>
+      <th>Dirección</th>
+      <th>Contacto</th>
+      <th>Referencia</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let y of stores">
+      <td>{{y.name}}</td>
+      <td>{{y.city}}</td>
+      <td>{{y.address}}</td>
+      <td>{{y.schedule}}</td>
+      <td><img src="{{y.image}}" style="height: 50px;"></td>
+    </tr>
+    </tbody>
+  </table>
 </div>
-</div>-->
