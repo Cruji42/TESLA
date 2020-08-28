@@ -11,18 +11,18 @@
               <h5 class="text-center text-info letter" style="font-family: 'Apple Color Emoji'; padding-top: 10px"> R E G I S T R O</h5>
               <div class="form-group" style="padding-top: 10px">
 
-                <label for="nombre" class="text-info letter">Nombre:</label><br>
-                <input type="text" formControlName="nombre" #nombre id="nombre" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.nombre.errors }">
-                <div *ngIf="submitted && f.nombre.errors" class="invalid-feedback">
-                  <div *ngIf="f.nombre.errors.required">Nombre es requerido</div>
+                <label for="nickname" class="text-info letter">Nombre de Usuario:</label><br>
+                <input type="text" formControlName="nickname" #nickname id="nickname" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.nickname.errors }">
+                <div *ngIf="submitted && f.nickname.errors" class="invalid-feedback">
+                  <div *ngIf="f.nickname.errors.required">Nombre es requerido</div>
 <!--                  <div *ngIf="f.nombre.errors">Formato de email invalido</div>-->
                 </div>
 
-                <label for="apellido" class="text-info letter">Apellido:</label><br>
+                <!--<label for="apellido" class="text-info letter">Apellido:</label><br>
                 <input type="text" formControlName="apellido" #apellido id="apellido" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.apellido.errors }" >
                 <div *ngIf="submitted && f.apellido.errors" class="invalid-feedback">
                   <div *ngIf="f.apellido.errors.required">Apellido es requerido</div>
-                  <!--                  <div *ngIf="f.nombre.errors">Formato de email invalido</div>-->
+                  &lt;!&ndash;                  <div *ngIf="f.nombre.errors">Formato de email invalido</div>&ndash;&gt;
                 </div>
 
                 <label for="telefono" class="text-info letter">Telefono:</label><br>
@@ -37,36 +37,36 @@
                 <input type="text" #ciudad formControlName="ciudad" id="ciudad" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.ciudad.errors }" >
                 <div *ngIf="submitted && f.ciudad.errors" class="invalid-feedback">
                   <div *ngIf="f.ciudad.errors.required">Ciudad es requerido</div>
-<!--                  <div *ngIf="f.telefono.errors.minlength">El telefono debe tener minimo 10 numeros</div>-->
+&lt;!&ndash;                  <div *ngIf="f.telefono.errors.minlength">El telefono debe tener minimo 10 numeros</div>&ndash;&gt;
                 </div>
 
                 <label for="direccion" class="text-info letter">Dirección:</label><br>
                 <input type="text" #direccion id="direccion" class="form-control" formControlName="direccion" [ngClass]="{ 'is-invalid': submitted && f.direccion.errors }"  >
                 <div *ngIf="submitted && f.direccion.errors" class="invalid-feedback">
                   <div *ngIf="f.direccion.errors.required">Dirección es requerido</div>
-                  <!--                  <div *ngIf="f.telefono.errors.minlength">El telefono debe tener minimo 10 numeros</div>-->
-                </div>
+                  &lt;!&ndash;                  <div *ngIf="f.telefono.errors.minlength">El telefono debe tener minimo 10 numeros</div>&ndash;&gt;
+                </div>-->
 
-                <label for="correo" class="text-info letter">Correo:</label><br>
+                <label for="email" class="text-info letter">Correo:</label><br>
 <!--                <input type="email" #correo name="correo" id="correo" class="form-control"  >-->
-                <input type="text" #correo formControlName="correo" id="correo" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.correo.errors }" />
-                <div *ngIf="submitted && f.correo.errors" class="invalid-feedback">
-                  <div *ngIf="f.correo.errors.required">Email es requerido</div>
-                  <div *ngIf="f.correo.errors.email">Formato de email invalido</div>
+                <input type="text" #email formControlName="email" id="email" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
+                <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                  <div *ngIf="f.email.errors.required">Email es requerido</div>
+                  <div *ngIf="f.email.errors.email">Formato de email invalido</div>
                 </div>
 
-                <label for="contrasena" class="text-info letter">Contraseña:</label><br>
+                <label for="password" class="text-info letter">Contraseña:</label><br>
 <!--                <input type="text" #contrasena name="contrasena" id="contrasena" class="form-control"  >-->
-                <input type="password" #contrasena id="contrasena" formControlName="contrasena" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.contrasena.errors }" />
-                <div *ngIf="submitted && f.contrasena.errors" class="invalid-feedback">
-                  <div *ngIf="f.contrasena.errors.required">Contraseña requerida</div>
-                  <div *ngIf="f.contrasena.errors.minlength">La contraseña debe tener minimo 8 caracteres</div>
+                <input type="password" #password id="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+                <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                  <div *ngIf="f.password.errors.required">Contraseña requerida</div>
+                  <div *ngIf="f.password.errors.minlength">La contraseña debe tener minimo 8 caracteres</div>
                 </div>
 
               </div>
 
               <div class="form-group">
-                <input type="button" class="btn btn-info btn-md enter-button" (click)="registrar_usuario(nombre.value, apellido.value, telefono.value, direccion.value, ciudad.value, correo.value, contrasena.value)" value="Registrar">
+                <input type="button" class="btn btn-info btn-md enter-button" (click)="registrar_usuario(nickname.value, email.value, password.value)" value="Registrar">
               </div>
               <p id="forgot-link " class="text-center ">
                 <span class="letter">¡Ya tengo cuenta!</span> <a href="login" class="text-info letter"  > Ingresar</a>

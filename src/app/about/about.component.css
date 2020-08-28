@@ -10,9 +10,10 @@
 }
 .title{
   text-align: center;
-  font-size: 5em;
-  color: #FE9CC5;
+  font-size: 1em;
+  color: #ffffff;
   font-family: "Palatino Linotype";
+  padding-top: 80%;
 }
 .description{
   position: absolute;
@@ -23,10 +24,10 @@
 .description hr{
   width: 20%;
   height: 2px;
-  background-color: #EC9EB1;
+  background-color: #333333;
 }
 .description2{
-  text-align: center;
+  text-align: justify;
   position: absolute;
   
   }

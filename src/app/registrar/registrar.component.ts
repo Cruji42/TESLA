@@ -14,7 +14,7 @@ import Swal from 'sweetalert2';
 export class RegistrarComponent implements OnInit {
   public formRegistrar: FormGroup;
   response: any;
-  user = {Name: '', LastName: '', Telephone: '', Address: '', City: '', Mail: '', Password: ''};
+  user = {nickname: '', email: '', password: ''};
   registerForm: FormGroup;
   submitted = false;
   constructor(private formBuilder: FormBuilder, public ws: WsService, public router: Router) {
@@ -23,13 +23,13 @@ export class RegistrarComponent implements OnInit {
 
   ngOnInit(): void {
     this.registerForm = this.formBuilder.group({
-        nombre: [ '', [Validators.required]],
-        apellido: [ '', [Validators.required]],
+        nickname: [ '', [Validators.required]],
+        /*apellido: [ '', [Validators.required]],
         telefono: ['', [Validators.required, Validators.minLength(10), Validators.pattern('[0-9]*')]],
         direccion: [ '', [Validators.required]],
-        ciudad: [ '', [Validators.required]],
-        correo: [ '', [Validators.required, Validators.email]],
-        contrasena: ['', [Validators.required, Validators.minLength(8)]],
+        ciudad: [ '', [Validators.required]],*/
+        email: [ '', [Validators.required, Validators.email]],
+        password: ['', [Validators.required, Validators.minLength(8)]],
     });
   }
 
@@ -37,7 +37,7 @@ export class RegistrarComponent implements OnInit {
 
 
 
-  registrar_usuario(nombre, apellido, telefono, direccion, ciudad, correo, contrasena){
+  registrar_usuario(nickname, email, password, ){
 
     this.submitted = true;
 
@@ -46,24 +46,20 @@ export class RegistrarComponent implements OnInit {
       return;
     }
 
-    this.user.Name = nombre;
-    this.user.LastName = apellido;
-    this.user.Telephone = telefono;
-    this.user.Address = direccion;
-    this.user.City = ciudad;
-    this.user.Mail = correo;
-    this.user.Password = contrasena;
+    this.user.nickname = nickname;
+    this.user.email = email;
+    this.user.password = password;
     console.log(this.user);
     this.ws.ws_create(this.user).subscribe(data => {
       this.response = data;
       console.log(this.response);
-      if(this.response === 'DB query Error'){
+      if (this.response === 'DB query Error'){
         Swal.fire({
           title: 'Opss..',
-          text: 'El correo con el que se desea registrar ya existe',
+          text: 'El correo o usuario con el que se desea registrar ya existe',
           icon: 'warning',
         });
-      }else if (this.response.status_code_header === 'HTTP/1.1 201 Created'){
+      }else if (this.response === 'success'){
         Swal.fire({
           title: 'Exitoso',
           text: 'Tu registro se realizo correctamente',
