@@ -11,6 +11,7 @@
 }
 .card{
   background-color: rgba(112, 112, 112, 0.55);
+  /*position: relative;*/
   position: relative;
   width: 70%;
   left: 15%;
@@ -21,7 +22,7 @@
 
 .log_back{
   position: absolute;
-  /*width: 100% ;*/
+  width: 100% ;
   /*border-radius: 10px;*/
   height: 140%;
   display: block;
@@ -29,6 +30,15 @@
   background-image: url("../../../assets/img/test.jpg");
   opacity: 0.8;
 
+}
+.log_back h1 {
+  color: whitesmoke;
+  position: relative;
+  text-align: center;
+  width: 40%;
+  top: 5%;
+  right: 30%;
+  left: 30%;
 }
 
 .card img {
@@ -92,7 +102,7 @@ button[type=button] {
 }
 
 .letter{
-  color: #333333 !important;
+  color: #ffffff !important;
 }
 .enter-button{
   width: 100%;

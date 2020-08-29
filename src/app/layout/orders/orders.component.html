@@ -39,18 +39,17 @@
 <hr>
 
 <div class="row">
-
-    <div  class="card" *ngFor="let y of response2_M">
-     <img class="card-img-top" src="{{y.Imagen}}" alt="Card image cap" >
+    <div  class="card" *ngFor="let y of dates">
+     <img class="card-img-top" src="{{y.image}}" alt="Card image cap" >
       <div class="card-body" *ngIf="y !== 'undefinded' ">
-        <h5 class="card-title">{{y.Nombre}}</h5>
-        <p class="card-text">{{y.Descripcion}}</p>
-        <p class="card-subtitle"><span style="color: #0a0101">Entrega:</span> {{y.FechaEntrega}} </p>
-          <p class="card-subtitle"><span style="color: #0a0101">Estado:</span> {{y.Estado}}</p>
+        <h5 class="card-title">{{y.Client}}</h5>
+        <p class="card-text"><span style="color: #0a0101"> Sucursal: </span>{{y.name}}</p>
+        <p class="card-subtitle"><span style="color: #0a0101"> Fecha: </span> {{y.date}} </p>
+          <p class="card-subtitle"><span style="color: #0a0101">Estado: </span> {{y.state}}</p>
 
       </div>
       <div class="card-footer">
-        <a type="button" (click)="eliminar(y.Id)" class="btn btn-info btn-md enter-button">Eliminar orden</a>
+        <a type="button" (click)="eliminar(y.id)" class="btn btn-info btn-md enter-button">Cancelar Prueba</a>
       </div>
   </div>
 </div>

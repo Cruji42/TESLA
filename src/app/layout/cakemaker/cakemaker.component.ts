@@ -11,22 +11,19 @@ import DateTimeFormat = Intl.DateTimeFormat;
   styleUrls: ['./cakemaker.component.css']
 })
 export class CakemakerComponent implements OnInit {
-  OrderData = {
-    FechaEntrega: null,
+  TestData = {
     ClienteId: null,
-    ProductoCant: null,
-    ProductImporte: 0.0,
-    ProductoDecoracion: null,
-    ProductoTamano: null,
-    ProductoSabor: null,
-    ProductoRelleno: null,
-    ProductoExtra: null,
+    Fecha: null,
+    Modelo: null,
+    Store: null
   };
   registerForm: FormGroup;
   submitted = false;
   data: any;
   log: any;
   dataUser: any;
+  dataStore: any;
+  dataProduct: any;
   id = {id: null};
   mes: any;
   dia: any;
@@ -39,18 +36,16 @@ export class CakemakerComponent implements OnInit {
 
   constructor(public WS: WsService, public router: Router, private formBuilder: FormBuilder) {
     this.GetUser();
+    this.GetStores();
+    this.GetProducts();
   }
 
   ngOnInit(): void {
     this.log = Number(localStorage.getItem('LogState'));
     this.registerForm = this.formBuilder.group({
       fecha: [ '', [Validators.required, ]],
-      cantidad: [ '', [Validators.required]],
-      decoracion: ['', [Validators.required, ]],
-      tamano: [ '', [Validators.required]],
-      sabor: [ '', [Validators.required]],
-      relleno: [ '', [Validators.required ]],
-      extra: ['', [Validators.required ]],
+      modelo: [ '', [Validators.required]],
+      store: ['', [Validators.required ]]
     });
   }
   get f() { return this.registerForm.controls; }
@@ -91,40 +86,34 @@ export class CakemakerComponent implements OnInit {
       return this.fecha;
     }
   }
-  makeOrder(FechaEntrega, cantidad, decoracion, tamano, sabor, relleno, extra ){
+  makeDate(Fecha, modelo, store){
     this.submitted = true;
-
     // stop here if form is invalid
     if (this.registerForm.invalid) {
       return;
     }
-
-    this.OrderData.ClienteId = Number(localStorage.getItem('Id'));
-    this.OrderData.FechaEntrega = this.Formato_fecha(FechaEntrega);
-    this.OrderData.ProductoCant = Number(cantidad);
-    this.OrderData.ProductoDecoracion = decoracion;
-    this.OrderData.ProductoTamano = tamano;
-    this.OrderData.ProductoSabor = sabor;
-    this.OrderData.ProductoRelleno = relleno;
-    this.OrderData.ProductoExtra = extra;
-    this.WS.CreateOrder(this.OrderData).subscribe(response => {
+    this.TestData.ClienteId = Number(localStorage.getItem('Id'));
+    this.TestData.Fecha = this.Formato_fecha(Fecha);
+    this.TestData.Modelo = Number(modelo);
+    this.TestData.Store = Number(store);
+    console.log(this.TestData);
+    this.WS.CreateDate(this.TestData).subscribe(response => {
       this.data = response;
       console.log(this.data);
-      if ( this.data.status_code_header === 'HTTP/1.1 422 Unprocessable Entity'){
+      if ( this.data === 'Error al agendar tu cita'){
         Swal.fire({
-          title: 'Error',
-          text: 'La fecha no cumple con el formato',
+          title: 'Error al agendar tu cita',
+          text: 'Tenemos problemas para agendar tu cita intentalo más tarde',
           icon: 'error',
         });
       } else {
         Swal.fire({
           title: 'Exitoso',
-          text: 'Tu pedido fue registrado y enviado',
+          text: 'Tu cita ha sido agendada',
           icon: 'success',
         });
-        this.router.navigate(['home']);
+        this.router.navigate(['orders']);
       }
-
     });
   }
   GetUser(){
@@ -132,6 +121,22 @@ export class CakemakerComponent implements OnInit {
     this.WS.getUser(this.id).subscribe(data => {
       this.response = data;
       this.dataUser = this.response[0].Nombre;
+    }, error => {
+      console.log(error);
+    });
+  }
+  GetStores(){
+    this.WS.Get_Stores().subscribe(data => {
+      this.response = data;
+      this.dataStore = this.response;
+    }, error => {
+      console.log(error);
+    });
+  }
+  GetProducts(){
+    this.WS.Get_Main_Products().subscribe(data => {
+      this.response = data;
+      this.dataProduct = this.response;
     }, error => {
       console.log(error);
     });

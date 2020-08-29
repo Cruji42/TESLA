@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { WsService} from '../../services';
 import { Router} from '@angular/router';
 import Swal from 'sweetalert2';
+import {__await} from 'tslib';
 
 @Component({
   selector: 'app-orders',
@@ -12,14 +13,12 @@ export class OrdersComponent implements OnInit {
   data: any;
   log: any;
   dataUser: any;
-  dataOrder: any;
-  id = {id: null};
+  id = {UserID: null};
   // tslint:disable-next-line:variable-name
-  id_O = {id_order: null};
+  id_O = {id_cite: null};
   response: any;
   response2: any;
-  response2_M: any = [];
-  products: any;
+  dates: any;
 
   constructor(public WS: WsService, public router: Router) {
   }
@@ -29,7 +28,7 @@ export class OrdersComponent implements OnInit {
     this.log = Number(localStorage.getItem('LogState'));
   }
   GetUser(){
-    this.id.id = Number(localStorage.getItem('Id'));
+    this.id.UserID = Number(localStorage.getItem('Id'));
     this.WS.getUser(this.id).subscribe(data => {
       this.response = data;
       this.dataUser = this.response[0];
@@ -58,16 +57,15 @@ export class OrdersComponent implements OnInit {
     this.router.navigate(['orders']);
   }
   GetOrders(){
-    this.WS.getOrders(this.id).subscribe(data => {
+    this.WS.getDates(this.id).subscribe(data => {
       this.response2 = data;
-      console.log(data);
-      for (let i = 0; i < this.response2.length; i++){
+      this.dates = this.response2;
+      console.log(this.dates);
+     /* for (let i = 0; i < this.response2.length; i++){
         if (i < (this.response2.length - 1)) {
           this.response2_M[i] = this.response2[i + 1];
         }
-      }
-      console.log(this.response2_M);
-      console.log(this.response2_M);
+      }*/
     }, error => {
       console.log(error);
     });
@@ -75,34 +73,34 @@ export class OrdersComponent implements OnInit {
 
   // tslint:disable-next-line:variable-name
   eliminar( id ){
-    this.id_O.id_order = Number(id);
+    this.id_O.id_cite = Number(id);
     Swal.fire({
-      title: 'Cancelar pedido',
-      text: '¿Estas seguro de que deseas cancelar tu pedido?',
+      title: 'Cancelar Prueba',
+      text: '¿Estas seguro de que deseas cancelar tu prueba?',
       icon: 'warning',
       showCancelButton: true,
-      confirmButtonColor: '#EC9EB1',
-      cancelButtonColor: '#D762CF',
+      confirmButtonColor: '#4cae50',
+      cancelButtonColor: '#ec1f34',
       confirmButtonText: 'Si'
     }).then((result) => {
       if (result.value) {
-        this.WS.DeleteOrder(this.id_O ).subscribe((data: any) => {
+        this.WS.DeleteCite(this.id_O ).subscribe((data: any) => {
             console.log(data);
-            if(data.body === 'ok'){
+            if (data === 'success'){
               Swal.fire({
                 title: '¡Cancelado!',
-                text: 'Tu pedido ha sido cancelado',
+                text: 'Recuerda que puedes agendar otra prueba',
                 icon: 'success',
-                confirmButtonColor: '#EC9EB1',
+                confirmButtonColor: '#707070',
               });
               // this.GetOrders();
               location.reload();
             } else {
               Swal.fire({
                 title: 'Error',
-                text: 'Tu pedido no pudo ser cancelado, favor de intentarlo más tarde',
+                text: 'Tu prueba no pudo ser cancelada, favor de intentarlo más tarde',
                 icon: 'success',
-                confirmButtonColor: '#EC9EB1',
+                confirmButtonColor: '#707070',
               });
             }
         });

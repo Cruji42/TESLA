@@ -12,11 +12,10 @@
 .card{
   background-color: #FFFFFF;
   position: relative;
-  width: 70%;
-  left: 15%;
-  right: 15%;
+  width: 30%;
+  left: 5%;
+  right: 5%;
   top: 10%;
-  border-radius: 50px;
 }
 
 .log_back{
@@ -31,9 +30,10 @@
 }
 
 .card img {
-  width: 50%;
+  width: 100%;
   height: auto;
   padding-left: 5%;
+  padding-right: 5%;
   padding-top: 10%;
 }
 

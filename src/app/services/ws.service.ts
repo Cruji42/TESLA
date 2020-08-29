@@ -19,20 +19,20 @@ export class WsService {
   ws_create(data){
     return this.http.post('http://localhost/CARS/add_User.php', data);
   }
-  CreateOrder(data){
-    return this.http.post('http://localhost/CARS/index.php/ORDER', data);
+  CreateDate(data){
+    return this.http.post('http://localhost/CARS/create_Date.php', data);
   }
   getUser(data){
     return this.http.post('http://localhost/CARS/index.php/USER', data );
     // return this.http.get('http://localhost/LAINNE/index.php/USER', data);
   }
-  getOrders(data){
-    return this.http.post('http://localhost/CARS/index.php/ORDER', data );
+  getDates(data){
+    return this.http.post('http://localhost/CARS/get_Dates.php', data );
     // return this.http.get('http://localhost/LAINNE/index.php/USER', data);
   }
 
-  DeleteOrder(data){
-    return this.http.post( 'http://localhost/CARS/index.php/ORDER', data);
+  DeleteCite(data){
+    return this.http.post( 'http://localhost/CARS/delete_Date.php', data);
   }
 
   Forgot(data){
