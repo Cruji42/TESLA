@@ -158,6 +158,8 @@ export class CakemakerComponent implements OnInit {
       this.chartData = data;
       console.log(this.chartData);
       // @ts-ignore
+      // @ts-ignore
+      // @ts-ignore
       this.Grafica = new Chart({
         chart: {
           type: 'line'
@@ -186,6 +188,7 @@ export class CakemakerComponent implements OnInit {
         },
         series: [
           {name: 'Model S',
+            type: 'line',
            data: [
             Number(this.chartData[0].MES),
             Number(this.chartData[1].MES),
