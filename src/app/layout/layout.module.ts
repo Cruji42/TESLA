@@ -4,7 +4,7 @@ import { LayoutComponent} from './layout.component';
 import { LayoutRoutingModule} from './layout-routing.module';
 import { ProfileComponent } from './profile/profile.component';
 import {CommonModule} from '@angular/common';
-
+import { DataTablesModule} from 'angular-datatables';
 
 
 @NgModule({
@@ -16,7 +16,8 @@ import {CommonModule} from '@angular/common';
     LayoutRoutingModule,
     ReactiveFormsModule,
     FormsModule,
-    CommonModule
+    CommonModule,
+    DataTablesModule
   ],
   providers: [],
   bootstrap: [LayoutComponent]

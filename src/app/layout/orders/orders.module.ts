@@ -3,6 +3,7 @@ import { ReactiveFormsModule, FormsModule} from '@angular/forms';
 import { OrdersComponent} from './orders.component';
 import { OrdersRoutingModule} from './orders-routing.module';
 import {CommonModule} from '@angular/common';
+import {DataTablesModule} from 'angular-datatables';
 
 
 
@@ -10,12 +11,13 @@ import {CommonModule} from '@angular/common';
   declarations: [
     OrdersComponent
   ],
-  imports: [
-    OrdersRoutingModule,
-    ReactiveFormsModule,
-    FormsModule,
-    CommonModule
-  ],
+    imports: [
+        OrdersRoutingModule,
+        ReactiveFormsModule,
+        FormsModule,
+        CommonModule,
+        DataTablesModule
+    ],
   providers: [],
   bootstrap: [OrdersComponent]
 })

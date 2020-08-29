@@ -9,6 +9,24 @@
   width: 2%;
   margin: 0 auto;
 }
+
+.boton-aceptar{
+
+  background-color: #6BC851 !important;
+
+}
+
+.boton-rechazar{
+
+  background-color: #FF3547 !important;
+
+}
+.center2{
+  padding: 1% 10%;
+  margin: 0 auto;
+  align-items: center;
+  align-content: center;
+}
 .card{
   background-color: #FFFFFF;
   position: relative;

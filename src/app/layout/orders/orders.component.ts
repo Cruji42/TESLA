@@ -3,6 +3,8 @@ import { WsService} from '../../services';
 import { Router} from '@angular/router';
 import Swal from 'sweetalert2';
 import {__await} from 'tslib';
+import {Subject} from 'rxjs';
+
 
 @Component({
   selector: 'app-orders',
@@ -20,19 +22,39 @@ export class OrdersComponent implements OnInit {
   response: any;
   response2: any;
   dates: any;
+  admin: any;
+  // @ts-ignore
+  dtTrigger: Subject = new Subject();
+  dtOptions: DataTables.Settings = {};
 
   constructor(public WS: WsService, public router: Router) {
   }
   ngOnInit(){
     this.GetUser();
     this.GetOrders();
+    this.GetAllDates();
     this.log = Number(localStorage.getItem('LogState'));
+    this.dtOptions = {
+      pagingType: 'full_numbers',
+      pageLength: 5
+    };
   }
+
+ /* ngOnDestroy(): void {
+    // Do not forget to unsubscribe the event
+    this.dtTrigger.unsubscribe();
+  }*/
+
   GetUser(){
     this.id.id = Number(localStorage.getItem('Id'));
     this.WS.getUser(this.id).subscribe(data => {
       this.response = data;
       this.dataUser = this.response[0].nickname;
+      if (this.response[0].access === '100'){
+        this.admin = false;
+      } else {
+        this.admin = true;
+      }
     }, error => {
       console.log(error);
     });
@@ -44,6 +66,7 @@ export class OrdersComponent implements OnInit {
   goOrders(){
     this.router.navigate(['orders']);
   }
+
   GetOrders(){
     this.WS.getDates(this.id).subscribe(data => {
       this.response2 = data;
@@ -58,8 +81,53 @@ export class OrdersComponent implements OnInit {
       this.response2 = data;
       this.dates = this.response2;
       console.log(this.dates);
+      this.dtTrigger.next();
     }, error => {
       console.log(error);
+    });
+  }
+
+  // tslint:disable-next-line:variable-name
+  DateDecision( id_date, decision){
+    this.WS.UpDateDate({ id: Number(id_date), option: decision }).subscribe( (data: any) => {
+      console.log(data);
+      if (data === 'success'){
+        if(decision === 'A'){
+          Swal.fire({
+            title: 'Aceptada',
+            text: 'La cita fue aceptada',
+            icon: 'success',
+          });
+          this.WS.getAllDates(this.id).subscribe(data => {
+            this.response2 = data;
+            this.dates = this.response2;
+            console.log(this.dates);
+            //this.dtTrigger.next();
+          }, error => {
+            console.log(error);
+          });
+        } else if (decision === 'B'){
+          Swal.fire({
+            title: 'Rechazada',
+            text: 'La cita fue rechazada',
+            icon: 'success',
+          });
+          this.WS.getAllDates(this.id).subscribe(data => {
+            this.response2 = data;
+            this.dates = this.response2;
+            console.log(this.dates);
+            // this.dtTrigger.next();
+          }, error => {
+            console.log(error);
+          });
+        }
+      } else {
+        Swal.fire({
+          title: 'Oops...',
+          text: 'Algo salio mal, favor de intentarlo más tarde',
+          icon: 'warning',
+        });
+      }
     });
   }
 
