@@ -7,13 +7,13 @@
           <div id="login-box" class="col-md-12">
             <form id="login-form" class="form" [formGroup]="registerForm">
 
-              <h2 class="text-center text-info letter">𝒫𝒶𝓈𝓉𝑒𝓁𝑒𝓇í𝒶 𝐿𝒜𝐼𝒩𝒩𝐸</h2>
-              <h5 class="text-center text-info letter" style="font-family: 'Apple Color Emoji'; padding-top: 10px"> R E C U P E R A C I Ó N</h5>
-              <h5 class="text-center text-info letter" style="font-family: 'Apple Color Emoji'; padding-top: 10px"> C O N T R A S E Ñ A</h5>
+              <h1 class="text-center text-info letter"><img src="../../assets/img/Tesla_Logo.png" alt=""></h1>
+              <h4 class="text-center text-info letter" style="font-family: 'MS Gothic'; padding-top: 10px; color: white !important;"> RECUPERACIÓN DE CONTRASEÑA</h4>
+
               <div class="form-group" style="padding-top: 10px">
-                <label for="username" class="text-info letter">Correo:</label><br>
-<!--                <input type="email" #email name="email" id="username" class="form-control" >-->
-                <input type="text" #email formControlName="email" id="username" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
+<!--                <label for="username" class="text-info letter">Correo:</label><br>-->
+
+                <input type="text" placeholder="Correo" #email formControlName="email" id="username" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
                 <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
                   <div *ngIf="f.email.errors.required">Email es requerido</div>
                   <div *ngIf="f.email.errors.email">Formato de email invalido</div>
