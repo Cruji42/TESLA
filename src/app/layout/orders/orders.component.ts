@@ -13,7 +13,7 @@ export class OrdersComponent implements OnInit {
   data: any;
   log: any;
   dataUser: any;
-  id = {UserID: null};
+  id = {id: null};
   // tslint:disable-next-line:variable-name
   id_O = {id_cite: null};
   response: any;
@@ -28,10 +28,10 @@ export class OrdersComponent implements OnInit {
     this.log = Number(localStorage.getItem('LogState'));
   }
   GetUser(){
-    this.id.UserID = Number(localStorage.getItem('Id'));
+    this.id.id = Number(localStorage.getItem('Id'));
     this.WS.getUser(this.id).subscribe(data => {
       this.response = data;
-      this.dataUser = this.response[0];
+      this.dataUser = this.response[0].nickname;
     }, error => {
       console.log(error);
     });

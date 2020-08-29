@@ -27,7 +27,7 @@
           {{dataUser}}
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="right: 7.5%; position: absolute">
-          <a class="dropdown-item"  (click)="Perfil()">Perfil</a>
+          <!--<a class="dropdown-item"  (click)="Perfil()">Perfil</a>-->
           <a class="dropdown-item" (click)="LogOut()">Cerrar sesión</a>
         </div>
       </li>
@@ -38,7 +38,7 @@
 <hr>
 
 
-<div id="login" class="log_back" >
+<div id="login" class="log_back" *ngIf=" !admin">
 <h1>Agenda tu prueba de manejo</h1>
   <div class="card">
     <div class="card-body ">
@@ -94,15 +94,9 @@
   </div>
 
 </div>
-<!--
-<div id="login" class="log_back" >
-  <h1>Agenda tu prueba de manejo</h1>
-  <div class="card">
-    <div class="card-body ">
 
-      </div>
-    </div>
-  </div>
+<div id="login1" class="log_back" *ngIf="admin">
+<h1>Ventas anuales</h1>
 
--->
+</div>
 

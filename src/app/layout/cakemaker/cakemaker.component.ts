@@ -31,7 +31,7 @@ export class CakemakerComponent implements OnInit {
   minutos: any;
   fecha: any;
   response: any;
-  aux: any;
+  admin: any;
   fecha_not: any;
 
   constructor(public WS: WsService, public router: Router, private formBuilder: FormBuilder) {
@@ -120,7 +120,12 @@ export class CakemakerComponent implements OnInit {
     this.id.id = Number(localStorage.getItem('Id'));
     this.WS.getUser(this.id).subscribe(data => {
       this.response = data;
-      this.dataUser = this.response[0].Nombre;
+      this.dataUser = this.response[0].nickname;
+      if (this.response[0].access === '100'){
+        this.admin = false;
+      } else {
+        this.admin = true;
+      }
     }, error => {
       console.log(error);
     });

@@ -20,7 +20,8 @@ export class NavbarComponent implements OnInit {
     this.id.id = Number(localStorage.getItem('Id'));
     this.WS.getUser(this.id).subscribe(data => {
       this.response = data;
-      this.dataUser = this.response[0].Nombre;
+      this.dataUser = this.response[0].nickname;
+      console.log(this.response);
     }, error => {
       console.log(error);
     });

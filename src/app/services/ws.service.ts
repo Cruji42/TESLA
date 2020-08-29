@@ -23,8 +23,7 @@ export class WsService {
     return this.http.post('http://localhost/CARS/create_Date.php', data);
   }
   getUser(data){
-    return this.http.post('http://localhost/CARS/index.php/USER', data );
-    // return this.http.get('http://localhost/LAINNE/index.php/USER', data);
+    return this.http.post('http://localhost/CARS/get_User.php', data );
   }
   getDates(data){
     return this.http.post('http://localhost/CARS/get_Dates.php', data );
