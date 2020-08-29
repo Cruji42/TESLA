@@ -38,6 +38,10 @@ export class WsService {
     return this.http.post( 'http://localhost/CARS/delete_Date.php', data);
   }
 
+  UpDateDate(data){
+    return this.http.post('http://localhost/CARS/update_Date.php', data);
+  }
+
   Forgot(data){
     return this.http.post( 'http://localhost/CARS/password.php', data);
   }

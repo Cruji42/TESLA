@@ -37,7 +37,7 @@
 </nav>
 <hr>
 
-<div class="row">
+<div class="row" *ngIf="!admin">
     <div  class="card" *ngFor="let y of dates">
      <img class="card-img-top" src="{{y.image}}" alt="Card image cap" >
       <div class="card-body" *ngIf="y !== 'undefinded' ">
@@ -51,6 +51,39 @@
         <a type="button" (click)="eliminar(y.id)" class="btn btn-info btn-md enter-button">Cancelar Prueba</a>
       </div>
   </div>
+</div>
+
+
+
+<div class="center2" *ngIf="admin">
+
+    <h1>Encuentra tu Distribuidor</h1>
+    <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="row-border hover">
+      <thead>
+      <tr>
+        <th>Cliente</th>
+        <th>Fecha de Cita</th>
+        <th>Vehiculo</th>
+        <th>Estado</th>
+        <th>Foto</th>
+        <th>Opciones</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let y of dates">
+        <td>{{y.Client}}</td>
+        <td>{{y.date}}</td>
+        <td>{{y.Vehicle}}</td>
+      <td>{{y.state}}</td>
+        <td><img src="{{y.image}}" style="height: 50px;"></td>
+        <td>
+          <button type="button" *ngIf="y.state === 'Solicitada'" class="  boton-aceptar"  (click)="DateDecision(y.id,'A')">Aceptar</button>
+          <button type="button" *ngIf="y.state === 'Solicitada'" class="  boton-rechazar" (click)="DateDecision(y.id,'B')">Rechazar</button>
+          <img class="center" *ngIf="y.state !== 'Solicitada'" src="../assets/img/Tesla_Logo.png" class="logo">
+        </td>
+      </tr>
+      </tbody>
+    </table>
 </div>
 
 
