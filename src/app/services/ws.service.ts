@@ -27,15 +27,12 @@ export class WsService {
   }
   getDates(data){
     return this.http.post('http://localhost/CARS/get_Dates.php', data );
-    // return this.http.get('http://localhost/LAINNE/index.php/USER', data);
   }
   getAllDates(data){
     return this.http.post('http://localhost/CARS/get_all_Dates.php', data );
-    // return this.http.get('http://localhost/LAINNE/index.php/USER', data);
   }
   get_Sales(){
     return this.http.get('http://localhost/CARS/get_Sales.php' );
-    // return this.http.get('http://localhost/LAINNE/index.php/USER', data);
   }
 
   DeleteCite(data){

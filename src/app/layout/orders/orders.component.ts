@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { WsService} from '../../services';
 import { Router} from '@angular/router';
 import Swal from 'sweetalert2';
-import {__await} from 'tslib';
 import {Subject} from 'rxjs';
 
 
@@ -12,13 +11,13 @@ import {Subject} from 'rxjs';
   styleUrls: ['./orders.component.css']
 })
 export class OrdersComponent implements OnInit {
+  tkn = localStorage.getItem('token');
   data: any;
   log: any;
   dataUser: any;
   id = {id: null};
-  JSON = {id: null, option: null};
   // tslint:disable-next-line:variable-name
-  id_O = {id_cite: null};
+  id_O = {id_cite: null, token: null};
   response: any;
   response2: any;
   dates: any;
@@ -39,12 +38,6 @@ export class OrdersComponent implements OnInit {
       pageLength: 5
     };
   }
-
- /* ngOnDestroy(): void {
-    // Do not forget to unsubscribe the event
-    this.dtTrigger.unsubscribe();
-  }*/
-
   GetUser(){
     this.id.id = Number(localStorage.getItem('Id'));
     this.WS.getUser(this.id).subscribe(data => {
@@ -89,10 +82,10 @@ export class OrdersComponent implements OnInit {
 
   // tslint:disable-next-line:variable-name
   DateDecision( id_date, decision){
-    this.WS.UpDateDate({ id: Number(id_date), option: decision }).subscribe( (data: any) => {
+    this.WS.UpDateDate({ id: Number(id_date), option: decision, token: this.tkn }).subscribe( (data: any) => {
       console.log(data);
       if (data === 'success'){
-        if(decision === 'A'){
+        if (decision === 'A'){
           Swal.fire({
             title: 'Aceptada',
             text: 'La cita fue aceptada',
@@ -102,7 +95,6 @@ export class OrdersComponent implements OnInit {
             this.response2 = data;
             this.dates = this.response2;
             console.log(this.dates);
-            //this.dtTrigger.next();
           }, error => {
             console.log(error);
           });
@@ -124,7 +116,7 @@ export class OrdersComponent implements OnInit {
       } else {
         Swal.fire({
           title: 'Oops...',
-          text: 'Algo salio mal, favor de intentarlo más tarde',
+          text: 'Token expirado renueva tu sesion',
           icon: 'warning',
         });
       }
@@ -134,6 +126,7 @@ export class OrdersComponent implements OnInit {
   // tslint:disable-next-line:variable-name
   eliminar( id ){
     this.id_O.id_cite = Number(id);
+    this.id_O.token = this.tkn;
     Swal.fire({
       title: 'Cancelar Prueba',
       text: '¿Estas seguro de que deseas cancelar tu prueba?',
@@ -153,7 +146,6 @@ export class OrdersComponent implements OnInit {
                 icon: 'success',
                 confirmButtonColor: '#707070',
               });
-              // this.GetOrders();
               location.reload();
             } else {
               Swal.fire({
@@ -168,8 +160,4 @@ export class OrdersComponent implements OnInit {
       }
     });
   }
-
-
-
-
 }
