@@ -3,7 +3,11 @@ import { WsService} from '../../services';
 import { Router} from '@angular/router';
 import Swal from 'sweetalert2';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import DateTimeFormat = Intl.DateTimeFormat;
+import { Chart} from 'angular-highcharts';
+import * as Highcharts from 'highcharts';
+import More from 'highcharts/highcharts-more';
+import {Subject} from 'rxjs';
+More(Highcharts);
 
 @Component({
   selector: 'app-cakemaker',
@@ -11,6 +15,8 @@ import DateTimeFormat = Intl.DateTimeFormat;
   styleUrls: ['./cakemaker.component.css']
 })
 export class CakemakerComponent implements OnInit {
+  Grafica: Chart;
+  info: any;
   TestData = {
     ClienteId: null,
     Fecha: null,
@@ -33,13 +39,13 @@ export class CakemakerComponent implements OnInit {
   response: any;
   admin: any;
   fecha_not: any;
+  chartData = [];
 
   constructor(public WS: WsService, public router: Router, private formBuilder: FormBuilder) {
     this.GetUser();
     this.GetStores();
     this.GetProducts();
   }
-
   ngOnInit(): void {
     this.log = Number(localStorage.getItem('LogState'));
     this.registerForm = this.formBuilder.group({
@@ -125,6 +131,7 @@ export class CakemakerComponent implements OnInit {
         this.admin = false;
       } else {
         this.admin = true;
+        this.GetSales();
       }
     }, error => {
       console.log(error);
@@ -142,6 +149,44 @@ export class CakemakerComponent implements OnInit {
     this.WS.Get_Main_Products().subscribe(data => {
       this.response = data;
       this.dataProduct = this.response;
+    }, error => {
+      console.log(error);
+    });
+  }
+  GetSales(){
+    this.WS.get_Sales().subscribe(data => {
+      this.response = data;
+      this.chartData = this.response;
+      console.log(this.chartData);
+      this.Grafica = new Chart({
+        chart: {
+          type: 'line'
+        },
+        title: {
+          text: 'Monthly Average Temperature'
+        },
+        subtitle: {
+          text: 'Source: WorldClimate.com'
+        },
+        xAxis: {
+          categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+        },
+        yAxis: {
+          title: {
+            text: 'Temperature (°C)'
+          }
+        },
+        plotOptions: {
+          line: {
+            dataLabels: {
+              enabled: true
+            },
+            enableMouseTracking: false
+          }
+        },
+        series:  [{data: [1 , 2]}
+        ]
+      });
     }, error => {
       console.log(error);
     });

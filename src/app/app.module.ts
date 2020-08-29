@@ -38,7 +38,8 @@ import { ChartModule } from 'angular-highcharts';
     DataTablesModule,
     ChartModule
   ],
-  providers: [AuthGuard],
+  providers: [AuthGuard
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
