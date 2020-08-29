@@ -30,6 +30,7 @@ export class ForgotComponent implements OnInit {
         text: 'Se ha enviado una contraseña de crecuperación a tu correo',
         icon: 'success',
       });
+      this.router.navigate(['login']);
     });
     console.log(email_data);
   }
