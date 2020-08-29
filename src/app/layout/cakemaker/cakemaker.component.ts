@@ -39,14 +39,14 @@ export class CakemakerComponent implements OnInit {
   response: any;
   admin: any;
   fecha_not: any;
-  chartData = [];
+  chartData: any;
 
   constructor(public WS: WsService, public router: Router, private formBuilder: FormBuilder) {
-    this.GetUser();
     this.GetStores();
     this.GetProducts();
   }
   ngOnInit(): void {
+    this.GetUser();
     this.log = Number(localStorage.getItem('LogState'));
     this.registerForm = this.formBuilder.group({
       fecha: [ '', [Validators.required, ]],
@@ -155,25 +155,25 @@ export class CakemakerComponent implements OnInit {
   }
   GetSales(){
     this.WS.get_Sales().subscribe(data => {
-      this.response = data;
-      this.chartData = this.response;
+      this.chartData = data;
       console.log(this.chartData);
+      // @ts-ignore
       this.Grafica = new Chart({
         chart: {
           type: 'line'
         },
         title: {
-          text: 'Monthly Average Temperature'
+          text: 'Ventas Mensuales del Model S'
         },
         subtitle: {
-          text: 'Source: WorldClimate.com'
+          text: '2019'
         },
         xAxis: {
           categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
         },
         yAxis: {
           title: {
-            text: 'Temperature (°C)'
+            text: 'Unidades Vendidas'
           }
         },
         plotOptions: {
@@ -184,7 +184,22 @@ export class CakemakerComponent implements OnInit {
             enableMouseTracking: false
           }
         },
-        series:  [{data: [1 , 2]}
+        series: [
+          {name: 'Model S',
+           data: [
+            Number(this.chartData[0].MES),
+            Number(this.chartData[1].MES),
+            Number(this.chartData[2].MES),
+            Number(this.chartData[3].MES),
+            Number(this.chartData[4].MES),
+            Number(this.chartData[5].MES),
+            Number(this.chartData[6].MES),
+            Number(this.chartData[7].MES),
+            Number(this.chartData[8].MES),
+            Number(this.chartData[9].MES),
+            Number(this.chartData[10].MES),
+            Number(this.chartData[11].MES)
+            ]}
         ]
       });
     }, error => {

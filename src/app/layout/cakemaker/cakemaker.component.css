@@ -9,6 +9,13 @@
   width: 2%;
   margin: 0 auto;
 }
+.graph{
+  position: absolute;
+  padding-top: 10%;
+  width: 60%;
+  left: 20%;
+  right: 20%;
+}
 .card{
   background-color: rgba(112, 112, 112, 0.55);
   /*position: relative;*/
