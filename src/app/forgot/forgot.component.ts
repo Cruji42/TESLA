@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {WsService} from '../services';
+import Swal from "sweetalert2";
 
 @Component({
   selector: 'app-forgot',
@@ -24,7 +25,11 @@ export class ForgotComponent implements OnInit {
     }
     this.WS.Forgot({ email: email_data}).subscribe( data => {
       console.log(data);
-      alert('Enviada');
+      Swal.fire({
+        title: 'Enviado',
+        text: 'Se ha enviado una contraseña de crecuperación a tu correo',
+        icon: 'success',
+      });
     });
     console.log(email_data);
   }
