@@ -10,20 +10,15 @@
 }
 
 .log_back{
-  overflow: scroll;
   position: absolute;
   width: 100% !important;
-  /*border-radius: 10px;*/
+  /*!*border-radius: 10px;*!*/
   height: 100% !important;
   /* The image used */
   background-image: url("../../assets/img/login.jpg");
-  opacity: 0.8;
-
-
-  /* Center and scale the image nicely */
-  /*background-position: center;
   background-repeat: no-repeat;
-  background-size: cover;*/
+  background-size: cover;
+  opacity: 0.8;
 
 }
 
