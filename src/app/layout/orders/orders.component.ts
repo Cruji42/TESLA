@@ -14,6 +14,7 @@ export class OrdersComponent implements OnInit {
   log: any;
   dataUser: any;
   id = {id: null};
+  JSON = {id: null, option: null};
   // tslint:disable-next-line:variable-name
   id_O = {id_cite: null};
   response: any;
@@ -36,22 +37,9 @@ export class OrdersComponent implements OnInit {
       console.log(error);
     });
   }
-  /*GetOrders(){
-    this.id.id = Number(localStorage.getItem('Id'));
-    this.WS.getOrders(this.id).subscribe(data => {
-      this.response2 = data;
-      this.dataOrder = this.response2.body;
-      console.log(this.dataOrder);
-      }, error => {
-      console.log(error);
-    });
-  }*/
   LogOut(){
     localStorage.clear();
     this.router.navigate(['home']);
-  }
-  Perfil(){
-    this.router.navigate(['profile']);
   }
   goOrders(){
     this.router.navigate(['orders']);
@@ -61,11 +49,15 @@ export class OrdersComponent implements OnInit {
       this.response2 = data;
       this.dates = this.response2;
       console.log(this.dates);
-     /* for (let i = 0; i < this.response2.length; i++){
-        if (i < (this.response2.length - 1)) {
-          this.response2_M[i] = this.response2[i + 1];
-        }
-      }*/
+    }, error => {
+      console.log(error);
+    });
+  }
+  GetAllDates(){
+    this.WS.getAllDates(this.id).subscribe(data => {
+      this.response2 = data;
+      this.dates = this.response2;
+      console.log(this.dates);
     }, error => {
       console.log(error);
     });

@@ -29,6 +29,10 @@ export class WsService {
     return this.http.post('http://localhost/CARS/get_Dates.php', data );
     // return this.http.get('http://localhost/LAINNE/index.php/USER', data);
   }
+  getAllDates(data){
+    return this.http.post('http://localhost/CARS/get_all_Dates.php', data );
+    // return this.http.get('http://localhost/LAINNE/index.php/USER', data);
+  }
 
   DeleteCite(data){
     return this.http.post( 'http://localhost/CARS/delete_Date.php', data);

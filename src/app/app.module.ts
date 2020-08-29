@@ -15,7 +15,7 @@ import { RegistrarComponent } from './registrar/registrar.component';
 import { ForgotComponent } from './forgot/forgot.component';
 import {LoginComponent} from './login/login.component';
 import { DataTablesModule } from 'angular-datatables';
-
+import { ChartModule } from 'angular-highcharts';
 
 @NgModule({
   declarations: [
@@ -35,7 +35,8 @@ import { DataTablesModule } from 'angular-datatables';
     HttpClientModule,
     ReactiveFormsModule,
     FormsModule,
-    DataTablesModule
+    DataTablesModule,
+    ChartModule
   ],
   providers: [AuthGuard],
   bootstrap: [AppComponent]
